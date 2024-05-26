@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 
 export async function GET(req) {
     try {
-        const id = req.url.split("user-connection/")[1];
-        const response = await fetch(`http://localhost:8000/users/${id}/connections/`);
+        const username = req.url.split("user-connection/")[1];
+        const response = await fetch(`http://localhost:8000/users/${username}/connections/`);
         const data = await response.json();
       
         

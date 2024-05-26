@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Home() {
     return (
-        <div>
+        <div className="max-w-sm mx-auto">
             <h1>User Connection App</h1>
             <ul>
                 <li>

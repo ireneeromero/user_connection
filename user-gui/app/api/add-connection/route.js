@@ -1,19 +1,24 @@
 
 
 import { NextResponse } from "next/server";
+
+const apiUrl = process.env.API_URL;
+console.log("apiUrl",apiUrl)
+
 export async function POST(req) {
     const { user_id, connection_with_id } = await req.json();
-    console.log("user_id", user_id)
-    const response = await fetch('http://localhost:8000/connections/', {
+    
+    const response = await fetch(`${apiUrl}/connections/`, {
         method: 'POST',
         headers: {
                 'Content-Type': 'application/json'
         },
         body: JSON.stringify({ 
-            user_id: user_id, 
-            connection_with_id: connection_with_id })
+            user_username: user_id, 
+            connection_with_username: connection_with_id })
         });
     const data = await response.json();
+
     
     return NextResponse.json(
 		data,

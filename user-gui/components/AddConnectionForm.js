@@ -1,9 +1,10 @@
 'use client';
+
 import { useState } from 'react';
 
 export default function AddConnectionForm() {
-    const [user_id, setUserId] = useState('');
-    const [connection_with_id, setConnectionWithId] = useState('');
+    const [user_username, setUserUsername] = useState('');
+    const [connection_with_username, setConnectionWithUsername] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -12,7 +13,7 @@ export default function AddConnectionForm() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ user_id, connection_with_id }),
+            body: JSON.stringify({ user_username, connection_with_username }),
         });
         if (res.ok) {
             alert('Connection added successfully');
@@ -24,19 +25,21 @@ export default function AddConnectionForm() {
     return (
         <form onSubmit={handleSubmit}>
             <label>
-                User ID:
+                First username:
                 <input
                     type="text"
-                    value={user_id}
-                    onChange={(e) => setUserId(e.target.value)}
+                    value={user_username}
+                    onChange={(e) => setUserUsername(e.target.value)}
+                    required
                 />
             </label>
             <label>
-                Connection with User ID:
+                Connect with username:
                 <input
                     type="text"
-                    value={connection_with_id}
-                    onChange={(e) => setConnectionWithId(e.target.value)}
+                    value={connection_with_username}
+                    onChange={(e) => setConnectionWithUsername(e.target.value)}
+                    required
                 />
             </label>
             <button type="submit">Add Connection</button>
