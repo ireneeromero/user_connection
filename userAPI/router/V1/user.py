@@ -40,8 +40,8 @@ def read_user_connections(username: str, db: _connection = Depends(get_db)):
     cursor.execute("SELECT c.connection_with_username FROM connections c WHERE c.user_username = %s;", (username,))
     connections = cursor.fetchall()
     cursor.close()
-    if not connections:
-        raise HTTPException(status_code=404, detail="User not found or no connections")
+    if not connections:  
+        return {"connections": [c[0] for c in connections]}
     return {"connections": [c["connection_with_username"] for c in connections]}
 
 @router.get("/stats/")
@@ -57,3 +57,11 @@ def get_stats(db: _connection = Depends(get_db)):
         "total_connections": total_connections
     }
     return stats
+
+@router.get("/get_users/", response_model=list[str])
+def get_all_usernames(db: _connection = Depends(get_db)):
+    cursor = db.cursor()
+    cursor.execute("SELECT username FROM users;")
+    usernames = cursor.fetchall()
+    cursor.close()
+    return [user["username"] for user in usernames]

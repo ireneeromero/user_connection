@@ -1,10 +1,13 @@
 
 
 import { NextResponse } from "next/server";
+
+const apiUrl = process.env.API_URL;
+
 export async function POST(req) {
     const { username, name } = await req.json();
 
-    const response = await fetch('http://localhost:8000/users/', {
+    const response = await fetch(`${apiUrl}/users/`, {
         method: 'POST',
         headers: {
                 'Content-Type': 'application/json'
