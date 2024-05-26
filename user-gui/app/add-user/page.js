@@ -1,4 +1,4 @@
-import AddUserForm from '../../components/addUserForm';
+import AddUserForm from '../../components/AddUserForm';
 
 
 export default function AddUser() {

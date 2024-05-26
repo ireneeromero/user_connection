@@ -10,6 +10,21 @@ export default function Home() {
                         Add User
                     </Link>
                 </li>
+                <li>
+                    <Link href="/add-connection">
+                        Add Connection
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/user-connections">
+                        View User Connections
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/stats">
+                        View Stats
+                    </Link>
+                </li>
                 
             </ul>
         </div>
