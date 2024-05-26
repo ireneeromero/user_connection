@@ -9,16 +9,17 @@ def create_tables():
     cursor = conn.cursor()
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS users (
-        id SERIAL PRIMARY KEY,
+        username VARCHAR(255) PRIMARY KEY,
         name VARCHAR(255) NOT NULL
     );
     """)
+    
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS connections (
         id SERIAL PRIMARY KEY,
-        user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-        connection_with_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-        UNIQUE(user_id, connection_with_id)
+        user_username VARCHAR(255) NOT NULL REFERENCES users(username) ON DELETE CASCADE,
+        connection_with_username VARCHAR(255) NOT NULL REFERENCES users(username) ON DELETE CASCADE,
+        UNIQUE(user_username, connection_with_username)
     );
     """)
     conn.commit()
