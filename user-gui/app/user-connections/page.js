@@ -1,5 +1,5 @@
 import UserConnections from '../../components/UserConnections';
-import Link from "next/link";
+
 
 export default function UserConnectionsPage() {
     return (
@@ -9,7 +9,7 @@ export default function UserConnectionsPage() {
             <h1 className="text-xl font-bold mb-4">User Connections</h1>
 
             <p className="mb-5 text-gray-700 dark:text-gray-300">
-                Which user's connections would you like to view?
+                Which user&apos;s connections would you like to view?
             </p>
             
             <UserConnections />

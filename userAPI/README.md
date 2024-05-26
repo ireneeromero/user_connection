@@ -1,15 +1,8 @@
 
 
 
-```sh
-docker-compose up -d
-```
+To see API docs
 
-
-pip install -r requirements.txt
-
-
-python create_tables.py
-
-
+```sh 
 http://127.0.0.1:8000/docs
+```

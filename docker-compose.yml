@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: user_connections
+    ports:
+      - "5450:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./userAPI
+      dockerfile: Dockerfile.api
+    command: sh -c "sleep 10 && python create_tables.py && uvicorn app:app --host 0.0.0.0 --port 8000"
+    volumes:
+      - ./userAPI:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DB: postgresql://user:password@db:5432/user_connections
+      API_HOST: 0.0.0.0
+      API_PORT: 8000
+
+  web:
+    build:
+      context: ./user-gui
+      dockerfile: Dockerfile.web
+    volumes:
+      - ./user-gui:/app
+    ports:
+      - "3001:3000"
+    depends_on:
+      - api
+    environment:
+      API_URL: http://api:8000
+
+volumes:
+  postgres_data:

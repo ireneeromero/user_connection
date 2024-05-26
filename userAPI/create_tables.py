@@ -5,7 +5,7 @@ from config import settings
 DATABASE_URL = settings.DB
 
 def create_tables():
-    conn = psycopg2.connect(DATABASE_URL)
+    conn = psycopg2.connect(settings.DB)
     cursor = conn.cursor()
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS users (
