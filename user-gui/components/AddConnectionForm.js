@@ -9,7 +9,6 @@ export default function AddConnectionForm() {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // Fetch users from API
     useEffect(() => {
         const fetchUsers = async () => {
             try {
@@ -38,14 +37,14 @@ export default function AddConnectionForm() {
         if (res.ok) {
             alert('Connection added successfully');
         } else {
-            alert('Failed to add connection');
+            alert('It looks like that user is already logged in with that user. ');
         }
     };
 
     if (loading) {
         return <p>Loading...</p>;
     }
-    
+
     const filteredUsersForFirstSelect = Array.isArray(users) ? users.filter(user => user !== connection_with_username) : [];
     const filteredUsersForSecondSelect = Array.isArray(users) ? users.filter(user => user !== user_username) : [];
 

@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 const apiUrl = process.env.API_URL;
 
-
+export const dynamic = "force-dynamic";
 export async function POST(req) {
     const { user_username, connection_with_username } = await req.json();
     

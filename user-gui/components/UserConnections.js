@@ -9,7 +9,6 @@ export default function UserConnections() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
-    // Fetch users from API
     useEffect(() => {
         const fetchUsers = async () => {
             try {

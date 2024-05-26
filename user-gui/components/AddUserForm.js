@@ -19,7 +19,7 @@ export default function AddUserForm() {
         if (res.ok) {
             alert('User added successfully');
         } else {
-            alert('Failed to add user');
+            alert('There is already a user registered with that username. Please choose another one. ');
         }
     };
 

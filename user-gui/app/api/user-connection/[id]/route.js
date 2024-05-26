@@ -2,13 +2,13 @@ import { NextResponse } from "next/server";
 
 const apiUrl = process.env.API_URL;
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req) {
     try {
         const username = req.url.split("user-connection/")[1];
-        const response = await fetch(`${apiUrl}/users/${username}/connections/`);
+        const response = await fetch(`${apiUrl}/users/${username}/connections/`, { cache: 'no-store'});
         const data = await response.json();
-        console.log("data", data)
-      
         
         return NextResponse.json(data, { status: 200 });
     } catch (error) {
