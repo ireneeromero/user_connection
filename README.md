@@ -38,7 +38,7 @@ Follow these steps to set up and deploy the project:
 3. **Build and run the containers:**
 
     ```bash
-    docker-compose up --build
+    docker compose up --build
     ```
 
     This command will build the Docker images and start the containers for PostgreSQL, FastAPI, and Next.js.
