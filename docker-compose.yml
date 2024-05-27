@@ -28,18 +28,6 @@ services:
       API_HOST: 0.0.0.0
       API_PORT: 8000
 
-  web:
-    build:
-      context: ./user-gui
-      dockerfile: Dockerfile.web
-    volumes:
-      - ./user-gui:/app
-    ports:
-      - "3001:3000"
-    depends_on:
-      - api
-    environment:
-      API_URL: http://api:8000
-
+  
 volumes:
   postgres_data:
