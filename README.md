@@ -45,25 +45,22 @@ Follow these steps to set up and deploy the project:
     - The FastAPI API will be available at `http://API_HOST:API_PORT`
   
 
-### TO SET UP DB + API
+### Build up the application
 
-5. **Build up the application:**
-
-
-    Open a new terminal and build the docker image
+Open a new terminal and build the docker image
 
     ```bash
     cd user-gui
     docker build -f Dockerfile.web -t user-connection:1.0.0 .
     ```
 
-    After that, create a `.env` file and fill the environment variables from the provided template.
+After that, create a `.env` file and fill the environment variables from the provided template.
 
-    You must change your `API_URL` with the IP where the API has been allocated on your machine.
+You must change your `API_URL` with the IP where the API has been allocated on your machine.
 
     ```API_URL=http://API_HOST:API_PORT```
 
-    Then, run the docker container as follows:
+Then, run the docker container as follows:
 
     ```bash
     docker run -p 3001:3000 --env-file .env -d user-connection:1.0.0
